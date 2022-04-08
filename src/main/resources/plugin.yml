@@ -1,0 +1,6 @@
+name: DoubleJump
+version: '${project.version}'
+main: me.fivevl.doublejump.Main
+api-version: 1.18
+authors: [ 5vl ]
+description: A trial project for DevRoom.
