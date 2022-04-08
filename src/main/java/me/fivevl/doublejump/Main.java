@@ -9,9 +9,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Main extends JavaPlugin {
     public static List<Player> doDoubleJump = new ArrayList<>();
+    public static List<Player> inGui = new ArrayList<>();
     private static Main instance;
     public static Main getInstance() {
         return instance;
@@ -23,6 +25,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        saveDefaultConfig();
         sql = new MySQL();
         try {
             setupDatabase();
@@ -31,6 +34,7 @@ public class Main extends JavaPlugin {
         }
         Bukkit.getPluginManager().registerEvents(new OnFly(), this);
         Bukkit.getPluginManager().registerEvents(new OnJump(), this);
+        Objects.requireNonNull(getCommand("jump")).setExecutor(new JumpCommand());
         getLogger().info("DoubleJump enabled!");
     }
 

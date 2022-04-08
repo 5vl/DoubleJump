@@ -19,7 +19,9 @@ public class MySQL implements Database {
 
     @Override
     public void disconnect() throws SQLException {
-        connection.close();
+        if (isConnected()) {
+            connection.close();
+        }
     }
 
     @Override
