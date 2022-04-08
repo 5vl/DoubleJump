@@ -40,7 +40,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new OnJump(), this);
         Bukkit.getPluginManager().registerEvents(new OnJoin(), this);
         Bukkit.getPluginManager().registerEvents(new OnInventoryClick(), this);
-        Objects.requireNonNull(getCommand("jump")).setExecutor(new JumpCommand());
+        Objects.requireNonNull(getCommand("jumpmenu")).setExecutor(new JumpCommand());
         getLogger().info("DoubleJump enabled!");
     }
 
