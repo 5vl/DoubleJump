@@ -42,7 +42,7 @@ public class JumpGui {
             ItemStack currentStrength = new ItemStack(Material.FEATHER, 1);
             ItemMeta currentStrengthMeta = currentStrength.getItemMeta();
             currentStrengthMeta.setDisplayName(Main.color("&2Current Jump Strength"));
-            currentStrengthMeta.setLore(Collections.singletonList(Main.color("&e" + rs.getDouble("strength"))));
+            currentStrengthMeta.setLore(Collections.singletonList(Main.color("&e" + rs.getInt("strength"))));
             currentStrength.setItemMeta(currentStrengthMeta);
             inv.setItem(13, currentStrength);
         }

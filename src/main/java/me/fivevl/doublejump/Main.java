@@ -77,7 +77,7 @@ public class Main extends JavaPlugin {
         sql.setPort(credentials[1]);
         sql.setDatabase(credentials[2]);
         sql.connect();
-        sql.execute("CREATE TABLE IF NOT EXISTS `settings` (`uuid` VARCHAR(36) NOT NULL, `strength` DOUBLE NOT NULL DEFAULT '1', PRIMARY KEY (`uuid`))");
+        sql.execute("CREATE TABLE IF NOT EXISTS `settings` (`uuid` VARCHAR(36) NOT NULL, `strength` INT NOT NULL DEFAULT '1', PRIMARY KEY (`uuid`))");
     }
 
     public static String color(String s) {

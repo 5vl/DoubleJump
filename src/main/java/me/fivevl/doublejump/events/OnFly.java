@@ -22,7 +22,7 @@ public class OnFly implements Listener {
             Main.doDoubleJump.remove(p);
             CachedRowSet rs = Main.getMySQL().query("SELECT * FROM `settings` WHERE `uuid` = '" + p.getUniqueId() + "'");
             rs.next();
-            p.setVelocity(p.getLocation().getDirection().multiply(rs.getDouble("strength")));
+            p.setVelocity(p.getLocation().getDirection().multiply(rs.getInt("strength")));
             p.setFallDistance(0);
         }
     }
