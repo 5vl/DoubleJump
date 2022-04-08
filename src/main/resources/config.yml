@@ -1,0 +1,6 @@
+database: # Database configuration, please change it to a valid one.
+  host: "12.34.56.78"
+  port: 3306
+  username: "admin"
+  password: "password"
+  database: "database"

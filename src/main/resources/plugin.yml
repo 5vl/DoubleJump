@@ -4,3 +4,6 @@ main: me.fivevl.doublejump.Main
 api-version: 1.18
 authors: [ 5vl ]
 description: A trial project for DevRoom.
+commands:
+  jump:
+    description: Opens the main GUI
