@@ -1,18 +1,22 @@
 package me.fivevl.doublejump;
 
 import me.fivevl.doublejump.events.OnFly;
+import me.fivevl.doublejump.events.OnInventoryClick;
+import me.fivevl.doublejump.events.OnJoin;
 import me.fivevl.doublejump.events.OnJump;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 public class Main extends JavaPlugin {
-    public static List<Player> doDoubleJump = new ArrayList<>();
+    public static HashMap<Player, Integer> doDoubleJump = new HashMap<>();
     public static List<Player> inGui = new ArrayList<>();
     private static Main instance;
     public static Main getInstance() {
@@ -34,6 +38,8 @@ public class Main extends JavaPlugin {
         }
         Bukkit.getPluginManager().registerEvents(new OnFly(), this);
         Bukkit.getPluginManager().registerEvents(new OnJump(), this);
+        Bukkit.getPluginManager().registerEvents(new OnJoin(), this);
+        Bukkit.getPluginManager().registerEvents(new OnInventoryClick(), this);
         Objects.requireNonNull(getCommand("jump")).setExecutor(new JumpCommand());
         getLogger().info("DoubleJump enabled!");
     }
@@ -72,5 +78,9 @@ public class Main extends JavaPlugin {
         sql.setDatabase(credentials[2]);
         sql.connect();
         sql.execute("CREATE TABLE IF NOT EXISTS `settings` (`uuid` VARCHAR(36) NOT NULL, `strength` DOUBLE NOT NULL DEFAULT '1', PRIMARY KEY (`uuid`))");
+    }
+
+    public static String color(String s) {
+        return ChatColor.translateAlternateColorCodes('&', s);
     }
 }

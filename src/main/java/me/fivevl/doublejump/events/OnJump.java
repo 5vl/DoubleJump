@@ -14,11 +14,11 @@ public class OnJump implements Listener {
         Player p = e.getPlayer();
         if (p.hasPermission("doublejump.use") && (p.getGameMode() == GameMode.ADVENTURE || p.getGameMode() == GameMode.SURVIVAL)) {
             p.setAllowFlight(true);
-            Main.doDoubleJump.add(p);
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), () -> {
+            int id = Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), () -> {
                 p.setAllowFlight(false);
                 Main.doDoubleJump.remove(p);
             }, 20L);
+            Main.doDoubleJump.put(p, id);
         }
     }
 }

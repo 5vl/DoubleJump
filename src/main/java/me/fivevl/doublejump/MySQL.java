@@ -1,6 +1,7 @@
 package me.fivevl.doublejump;
 
 import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetProvider;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -56,7 +57,7 @@ public class MySQL implements Database {
 
     @Override
     public CachedRowSet query(String query) throws SQLException{
-        CachedRowSet cachedRowSet = new com.sun.rowset.CachedRowSetImpl();
+        CachedRowSet cachedRowSet = RowSetProvider.newFactory().createCachedRowSet();
         cachedRowSet.populate(connection.prepareStatement(query).executeQuery());
         return cachedRowSet;
     }
